@@ -4,7 +4,11 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 24
+<<<<<<< HEAD
   productGUID: 7688542520f28104293ef0af0afba29a
+=======
+  productGUID: 6f3f52523adf2db4894a70ce14c2fde4
+>>>>>>> 76aa38385def56e27ae775597e2766d6ff8ff3b9
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -641,11 +645,19 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
+<<<<<<< HEAD
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: 
   organizationId: 
+=======
+  cloudProjectId: aba082c0-7797-4bda-8941-1ba625d7aec0
+  framebufferDepthMemorylessMode: 0
+  qualitySettingsNames: []
+  projectName: Dungeon Game (1)
+  organizationId: butterm-40
+>>>>>>> 76aa38385def56e27ae775597e2766d6ff8ff3b9
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
