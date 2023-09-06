@@ -201,11 +201,7 @@ QualitySettings:
     skinWeights: 255
     textureQuality: 0
     anisotropicTextures: 2
-<<<<<<< HEAD
     antiAliasing: 2
-=======
-    antiAliasing: 0
->>>>>>> 76aa38385def56e27ae775597e2766d6ff8ff3b9
     softParticles: 1
     softVegetation: 1
     realtimeReflectionProbes: 1
@@ -224,11 +220,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-<<<<<<< HEAD
     customRenderPipeline: {fileID: 0}
-=======
-    customRenderPipeline: {fileID: 11400000, guid: 2a2eac28a6f8a5146acf363ef4ca060b, type: 2}
->>>>>>> 76aa38385def56e27ae775597e2766d6ff8ff3b9
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
     Android: 2
