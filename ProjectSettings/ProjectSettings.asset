@@ -4,7 +4,11 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 24
+<<<<<<< HEAD
   productGUID: 688a37b082dcd414181ff13519f72304
+=======
+  productGUID: a3d5ebd44f1e2b047a160ea464080028
+>>>>>>> Diego's_Prototype
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -56,7 +60,10 @@ PlayerSettings:
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
   iosUseCustomAppBackgroundBehavior: 0
+<<<<<<< HEAD
   iosAllowHTTPDownload: 1
+=======
+>>>>>>> Diego's_Prototype
   allowedAutorotateToPortrait: 1
   allowedAutorotateToPortraitUpsideDown: 1
   allowedAutorotateToLandscapeRight: 1
@@ -120,9 +127,12 @@ PlayerSettings:
   switchNVNShaderPoolsGranularity: 33554432
   switchNVNDefaultPoolsGranularity: 16777216
   switchNVNOtherPoolsGranularity: 16777216
+<<<<<<< HEAD
   switchNVNMaxPublicTextureIDCount: 0
   switchNVNMaxPublicSamplerIDCount: 0
   switchMaxWorkerMultiple: 8
+=======
+>>>>>>> Diego's_Prototype
   switchGpuScratchPoolGranularity: 2097152
   switchAllowGpuScratchShrinking: 0
   switchNVNMaxPublicTextureIDCount: 0
@@ -152,7 +162,10 @@ PlayerSettings:
     enable360StereoCapture: 0
   isWsaHolographicRemotingEnabled: 0
   enableFrameTimingStats: 0
+<<<<<<< HEAD
   enableOpenGLProfilerGPURecorders: 1
+=======
+>>>>>>> Diego's_Prototype
   useHDRDisplay: 0
   D3DHDRBitDepth: 0
   m_ColorGamuts: 00000000
@@ -434,7 +447,10 @@ PlayerSettings:
   switchNativeFsCacheSize: 32
   switchIsHoldTypeHorizontal: 0
   switchSupportedNpadCount: 8
+<<<<<<< HEAD
   switchEnableTouchScreen: 1
+=======
+>>>>>>> Diego's_Prototype
   switchSocketConfigEnabled: 0
   switchTcpInitialSendBufferSize: 32
   switchTcpInitialReceiveBufferSize: 64
@@ -446,8 +462,11 @@ PlayerSettings:
   switchSocketInitializeEnabled: 1
   switchNetworkInterfaceManagerInitializeEnabled: 1
   switchPlayerConnectionEnabled: 1
+<<<<<<< HEAD
   switchUseNewStyleFilepaths: 0
   switchUseLegacyFmodPriorities: 1
+=======
+>>>>>>> Diego's_Prototype
   switchUseNewStyleFilepaths: 1
   switchUseLegacyFmodPriorities: 0
   switchUseMicroSleepForYield: 1
@@ -646,7 +665,10 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
+<<<<<<< HEAD
   windowsGamepadBackendHint: 0
+=======
+>>>>>>> Diego's_Prototype
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []

@@ -4,7 +4,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.AnimationClip",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -12,7 +15,10 @@
         {
             "userAdded": false,
             "type": "UnityEditor.Animations.AnimatorController",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -20,7 +26,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.AnimatorOverrideController",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -28,7 +37,10 @@
         {
             "userAdded": false,
             "type": "UnityEditor.Audio.AudioMixerController",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -36,7 +48,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.ComputeShader",
+<<<<<<< HEAD
             "defaultInstantiationMode": 1
+=======
+>>>>>>> Diego's_Prototype
             "ignore": true,
             "defaultInstantiationMode": 1,
             "supportsModification": true
@@ -44,7 +59,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.Cubemap",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -52,7 +70,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.GameObject",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -60,7 +81,10 @@
         {
             "userAdded": false,
             "type": "UnityEditor.LightingDataAsset",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": false
@@ -68,7 +92,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.LightingSettings",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -76,7 +103,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.Material",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -84,7 +114,10 @@
         {
             "userAdded": false,
             "type": "UnityEditor.MonoScript",
+<<<<<<< HEAD
             "defaultInstantiationMode": 1
+=======
+>>>>>>> Diego's_Prototype
             "ignore": true,
             "defaultInstantiationMode": 1,
             "supportsModification": true
@@ -92,7 +125,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.PhysicMaterial",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -100,7 +136,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.PhysicsMaterial2D",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -108,7 +147,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.Rendering.PostProcessing.PostProcessProfile",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -116,7 +158,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.Rendering.PostProcessing.PostProcessResources",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -124,7 +169,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.Rendering.VolumeProfile",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -132,7 +180,10 @@
         {
             "userAdded": false,
             "type": "UnityEditor.SceneAsset",
+<<<<<<< HEAD
             "defaultInstantiationMode": 1
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": false
@@ -140,7 +191,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.Shader",
+<<<<<<< HEAD
             "defaultInstantiationMode": 1
+=======
+>>>>>>> Diego's_Prototype
             "ignore": true,
             "defaultInstantiationMode": 1,
             "supportsModification": true
@@ -148,7 +202,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.ShaderVariantCollection",
+<<<<<<< HEAD
             "defaultInstantiationMode": 1
+=======
+>>>>>>> Diego's_Prototype
             "ignore": true,
             "defaultInstantiationMode": 1,
             "supportsModification": true
@@ -156,7 +213,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.Texture",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -164,7 +224,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.Texture2D",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -172,7 +235,10 @@
         {
             "userAdded": false,
             "type": "UnityEngine.Timeline.TimelineAsset",
+<<<<<<< HEAD
             "defaultInstantiationMode": 0
+=======
+>>>>>>> Diego's_Prototype
             "ignore": false,
             "defaultInstantiationMode": 0,
             "supportsModification": true
@@ -181,7 +247,10 @@
     "defaultDependencyTypeInfo": {
         "userAdded": false,
         "type": "<default_scene_template_dependencies>",
+<<<<<<< HEAD
         "defaultInstantiationMode": 1
+=======
+>>>>>>> Diego's_Prototype
         "ignore": false,
         "defaultInstantiationMode": 1,
         "supportsModification": true

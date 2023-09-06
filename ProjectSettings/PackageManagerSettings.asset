@@ -32,6 +32,11 @@ MonoBehaviour:
   m_RegistryInfoDraft:
     m_Modified: 0
     m_ErrorMessage: 
+<<<<<<< HEAD
     m_UserModificationsInstanceId: -878
     m_OriginalInstanceId: -880
+=======
+    m_UserModificationsInstanceId: -844
+    m_OriginalInstanceId: -846
+>>>>>>> Diego's_Prototype
   m_LoadAssets: 0
