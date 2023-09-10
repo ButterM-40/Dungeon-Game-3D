@@ -27,10 +27,6 @@ QualitySettings:
     realtimeReflectionProbes: 0
     billboardsFaceCameraPosition: 0
     vSyncCount: 0
-<<<<<<< HEAD
-    realtimeGICPUUsage: 25
-=======
->>>>>>> Diego's_Prototype
     lodBias: 0.3
     maximumLODLevel: 0
     streamingMipmapsActive: 0
@@ -67,10 +63,6 @@ QualitySettings:
     realtimeReflectionProbes: 0
     billboardsFaceCameraPosition: 0
     vSyncCount: 0
-<<<<<<< HEAD
-    realtimeGICPUUsage: 25
-=======
->>>>>>> Diego's_Prototype
     lodBias: 0.4
     maximumLODLevel: 0
     streamingMipmapsActive: 0
@@ -107,10 +99,6 @@ QualitySettings:
     realtimeReflectionProbes: 0
     billboardsFaceCameraPosition: 0
     vSyncCount: 1
-<<<<<<< HEAD
-    realtimeGICPUUsage: 25
-=======
->>>>>>> Diego's_Prototype
     lodBias: 0.7
     maximumLODLevel: 0
     streamingMipmapsActive: 0
@@ -147,10 +135,6 @@ QualitySettings:
     realtimeReflectionProbes: 1
     billboardsFaceCameraPosition: 1
     vSyncCount: 1
-<<<<<<< HEAD
-    realtimeGICPUUsage: 50
-=======
->>>>>>> Diego's_Prototype
     lodBias: 1
     maximumLODLevel: 0
     streamingMipmapsActive: 0
@@ -187,10 +171,6 @@ QualitySettings:
     realtimeReflectionProbes: 1
     billboardsFaceCameraPosition: 1
     vSyncCount: 1
-<<<<<<< HEAD
-    realtimeGICPUUsage: 50
-=======
->>>>>>> Diego's_Prototype
     lodBias: 1.5
     maximumLODLevel: 0
     streamingMipmapsActive: 0
@@ -221,20 +201,12 @@ QualitySettings:
     skinWeights: 255
     textureQuality: 0
     anisotropicTextures: 2
-    antiAliasing: 0
-<<<<<<< HEAD
     antiAliasing: 2
-=======
->>>>>>> Diego's_Prototype
     softParticles: 1
     softVegetation: 1
     realtimeReflectionProbes: 1
     billboardsFaceCameraPosition: 1
     vSyncCount: 1
-<<<<<<< HEAD
-    realtimeGICPUUsage: 100
-=======
->>>>>>> Diego's_Prototype
     lodBias: 2
     maximumLODLevel: 0
     streamingMipmapsActive: 0
