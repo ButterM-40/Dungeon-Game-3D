@@ -4,6 +4,38 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public InventoryObject inventory;
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Testing Collision on Item: " + other.name);
+        
+        var item = other.GetComponent<Item>();
+        if (other.CompareTag("Player"))
+        {
+            if (item)
+            {
+                inventory.AddItem(item.item, 1);
+                Destroy(other.gameObject);
+            }
+        }        
+    }
+    //public void OnCollisionEnter(Collision other)
+    //{
+    //    var item = other.GetComponent<Item>();
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        if (item)
+    //        {
+    //            inventory.AddItem(item.item, 1);
+    //            Destroy(other.gameObject);
+    //        }
+    //    }
+    //}
+    private void OnApplicationQuit()
+    {
+        inventory.Container.Clear();
+    }
+
     public int maxHealth=100;
     public int currentHealth;
 
