@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588fa785a394c214f826676ea6c6f96f, type: 3}
   m_Name: GreatSword
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 7115343734610565343, guid: 649847c4a74cb134fbf463a5287f49e1, type: 3}
   type: 1
   description: 'This is a Great Sword
 

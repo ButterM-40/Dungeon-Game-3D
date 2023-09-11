@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573050163d94b2043a181db56ef833ea, type: 3}
   m_Name: Health Potion
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 8441206576663135522, guid: d29e59e9c2838a243b0ba8b2da59cfdb, type: 3}
   type: 0
   description: Item that restores the player's health by 20 HP.
   restoreHealthValue: 20
