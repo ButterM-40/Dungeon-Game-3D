@@ -47,7 +47,7 @@ public class ThirdPersonMovement : MonoBehaviour
             //Add a speed boost 
             
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
-            Debug.Log(moveDir);
+           // Debug.Log(moveDir);
         }else{
             //Animation for the idle
             animator.SetBool("IsMoving", false);
