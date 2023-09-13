@@ -16,6 +16,7 @@ public class CollisionTest : MonoBehaviour
     }
     void OnTriggerStay(Collider other)
     {
+        float timePassed = Time.deltaTime;
         if (other.gameObject.tag == "Player")
         {
             //if (timePassed >= AttackCD)
