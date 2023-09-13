@@ -19,13 +19,13 @@ public class CollisionTest : MonoBehaviour
         float timePassed = Time.deltaTime;
         if (other.gameObject.tag == "Player")
         {
-            if (timePassed >= AttackCD)
-            {
-          //  other.GetComponent<Player>().TakeDamage(10);
+            //if (timePassed >= AttackCD)
+            //{
+            other.GetComponent<Player>().TakeDamage(10);
             print("Attack");
             print(Time.deltaTime);
-            timePassed=0;
-            }
+            //timePassed=0;
+            //}
         }
     }
 }
