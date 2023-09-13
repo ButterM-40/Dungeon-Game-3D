@@ -21,10 +21,10 @@ public class CollisionTest : MonoBehaviour
         {
             //if (timePassed >= AttackCD)
             //{
-                other.GetComponent<Player>().TakeDamage(100);
-                print("Attack");
-                print(Time.deltaTime);
-                timePassed=0;
+            other.GetComponent<Player>().TakeDamage(10);
+            print("Attack");
+            print(Time.deltaTime);
+            //timePassed=0;
             //}
         }
     }
