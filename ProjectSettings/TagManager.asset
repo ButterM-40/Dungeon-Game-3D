@@ -3,21 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-<<<<<<< HEAD
-  - SkillAttack5
-=======
-  - enemy
->>>>>>> ecd3d5af505d59b333961fc861b910dcac5d8a6f
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Item
+  - 
   - Water
   - UI
   - 
-  - Player
+  - 
   - 
   - 
   - 
