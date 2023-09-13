@@ -48,6 +48,7 @@ public class ThirdPersonMovement : MonoBehaviour
             
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
             //Debug.Log(moveDir);
+            
         }else{
             //Animation for the idle
             animator.SetBool("IsMoving", false);
