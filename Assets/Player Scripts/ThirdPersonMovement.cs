@@ -75,21 +75,58 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
-    IEnumerator isRollingCoroutine()
-    {
-        // Play rolling animation
-        animator.SetBool("IsRolling", true);
-        animator.SetBool("IsRunning", false);
-        animator.SetBool("IsMoving", false);
-        Debug.Log("Running Test");
+    // IEnumerator isRollingCoroutine()
+    // {
+    //     // Play rolling animation
+    //     animator.SetBool("IsRolling", true);
+    //     animator.SetBool("IsRunning", false);
+    //     animator.SetBool("IsMoving", false);
+    //     Debug.Log("Running Test");
 
-        // Wait for the rolling animation's duration or use a fixed time
-        float rollingDuration = 1.0f; // Adjust this as needed
-        yield return new WaitForSeconds(rollingDuration);
+    //     // Wait for the rolling animation's duration or use a fixed time
+    //     float rollingDuration = 1.0f; // Adjust this as needed
+    //     yield return new WaitForSeconds(rollingDuration);
 
-        // Stop rolling and return to normal movement
-        animator.SetBool("IsRolling", false);
+    //     // Stop rolling and return to normal movement
+    //     animator.SetBool("IsRolling", false);
         
-        isRolling = false;
+    //     isRolling = false;
+    // }
+    IEnumerator isRollingCoroutine()
+{
+    // Play rolling animation
+    animator.SetBool("IsRolling", true);
+    animator.SetBool("IsRunning", false);
+    animator.SetBool("IsMoving", false);
+    Debug.Log("Running Test");
+
+    // Get the character's current forward direction (assuming it's facing forward)
+    Vector3 rollDirection = transform.forward; // Adjust this as needed
+
+    // Apply a force to move the character in the rollDirection
+    float rollSpeed = 5.0f; // Adjust this as needed
+    float rollingDuration = 1.4f; // Adjust this as needed
+
+    // Calculate the distance to move during the roll based on the rollSpeed and duration
+    float rollDistance = rollSpeed * rollingDuration;
+
+    // Get the CharacterController component
+    CharacterController characterController = GetComponent<CharacterController>();
+
+    // Move the character in the rollDirection for the specified distance
+    while (rollDistance > 0)
+    {
+        float moveDistance = rollSpeed * Time.deltaTime;
+        characterController.Move(rollDirection * moveDistance);
+        rollDistance -= moveDistance;
+
+        yield return null;
     }
+
+    // Stop rolling and return to normal movement
+    animator.SetBool("IsRolling", false);
+
+    isRolling = false;
+}
+
 }
