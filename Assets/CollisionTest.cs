@@ -29,6 +29,8 @@ public class CollisionTest : MonoBehaviour
         }
     }
     */
+    
+    //code edited by Alissen 
     float AttackCD = 1.0f; // Adjust this value to set the cooldown duration
     float timePassed = 0.0f;
     bool canAttack = true;
