@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public InventoryObject inventory;
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Testing Collision on Item: " + other.name);
+        //Debug.Log("Testing Collision on Item: " + other.name);
 
         var item = other.GetComponent<Item>();
 
