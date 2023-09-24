@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.Examples;
 using UnityEngine;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
+  
+    
     public CharacterController controller;
     public Transform cam;
     // Update is called once per frame
@@ -11,8 +14,10 @@ public class ThirdPersonMovement : MonoBehaviour
     public float speed = 6.0f;
     private Animator animator;
     float turnSmoothVelocity;
+     Vector3 moveDir;
     void Start(){
         animator = GetComponent<Animator>();
+        animator.SetBool("IsAttacking",false);
     }
     void Update()
     {
@@ -29,13 +34,14 @@ public class ThirdPersonMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             
             //Adjustment for rotational movement
-            Vector3 moveDir = Quaternion.Euler(0f,targetAngle,0f) * Vector3.forward ;
+            moveDir = Quaternion.Euler(0f,targetAngle,0f) * Vector3.forward ;
             
             //Moving Animations
-            if(!Input.GetKey(KeyCode.LeftShift)){
+            if(!Input.GetKey(KeyCode.LeftShift) || Input.GetMouseButtonDown(0)){
                 speed = 6.0f;
                 animator.SetBool("IsMoving", true);
                 animator.SetBool("IsRunning", false);
+                
             }else{
                 speed = 10f;
                 animator.SetBool("IsRunning", true);
@@ -45,15 +51,28 @@ public class ThirdPersonMovement : MonoBehaviour
             moveDir.y = -100f * Time.deltaTime;
 
             //Add a speed boost 
-            
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            if(Input.GetMouseButtonDown(0))
+            {
+                animator.SetBool("IsAttacking", true);
+            }
+           
+
+            controller.Move(moveDir.normalized * speed * Time.deltaTime);       
             //Debug.Log(moveDir);
             
         }else{
             //Animation for the idle
             animator.SetBool("IsMoving", false);
             animator.SetBool("IsRunning", false);
+            if (Input.GetMouseButtonDown(0))
+                animator.SetBool("IsAttacking", true);
         }
-        
+        if(Input.GetMouseButtonUp(0))
+            animator.SetBool("IsAttacking", false);
+   
     }
+    
+
 }
+
+
