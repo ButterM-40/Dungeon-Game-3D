@@ -11,17 +11,10 @@ public class ThirdPersonMovement : MonoBehaviour
     public Transform cam;
     public float turnSmoothTime = 0.1f;
     public float speed = 6.0f;
-
     private Animator animator;
-
     private bool isRolling = false;
     private float turnSmoothVelocity;
-
-    void Start()
-    {
-
-    float turnSmoothVelocity;
-     Vector3 moveDir;
+    Vector3 moveDir;
     void Start(){
 
         animator = GetComponent<Animator>();
@@ -39,7 +32,6 @@ public class ThirdPersonMovement : MonoBehaviour
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
@@ -60,12 +52,6 @@ public class ThirdPersonMovement : MonoBehaviour
                 animator.SetBool("IsMoving", true);
                 animator.SetBool("IsRunning", false);
             }
-            else
-            {
-
-            
-            //Adjustment for rotational movement
-            moveDir = Quaternion.Euler(0f,targetAngle,0f) * Vector3.forward ;
             
             //Moving Animations
             if(!Input.GetKey(KeyCode.LeftShift) || Input.GetMouseButtonDown(0)){
@@ -80,32 +66,24 @@ public class ThirdPersonMovement : MonoBehaviour
                 animator.SetBool("IsMoving", false);
             }
 
-
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
-        }
-        else
-        {
-            // Animation for idle
-
-            //Add a speed boost 
             if(Input.GetMouseButtonDown(0))
             {
                 animator.SetBool("IsAttacking", true);
             }
-           
 
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);       
-            //Debug.Log(moveDir);
-            
-        }else{
+            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+        }
+        else{
             //Animation for the idle
-
             animator.SetBool("IsMoving", false);
             animator.SetBool("IsRunning", false);
             if (Input.GetMouseButtonDown(0))
                 animator.SetBool("IsAttacking", true);
         }
 
+        if(Input.GetMouseButtonUp(0)){
+            animator.SetBool("IsAttacking", false);
+        }
 
         if (Input.GetKey(KeyCode.Space))
         {
@@ -116,26 +94,7 @@ public class ThirdPersonMovement : MonoBehaviour
             }
         }
     }
-
-    // IEnumerator isRollingCoroutine()
-    // {
-    //     // Play rolling animation
-    //     animator.SetBool("IsRolling", true);
-    //     animator.SetBool("IsRunning", false);
-    //     animator.SetBool("IsMoving", false);
-    //     Debug.Log("Running Test");
-
-    //     // Wait for the rolling animation's duration or use a fixed time
-    //     float rollingDuration = 1.0f; // Adjust this as needed
-    //     yield return new WaitForSeconds(rollingDuration);
-
-    //     // Stop rolling and return to normal movement
-    //     animator.SetBool("IsRolling", false);
-        
-    //     isRolling = false;
-    // }
-    IEnumerator isRollingCoroutine()
-{
+    IEnumerator isRollingCoroutine(){
     // Play rolling animation
     animator.SetBool("IsRolling", true);
     animator.SetBool("IsRunning", false);
@@ -164,20 +123,10 @@ public class ThirdPersonMovement : MonoBehaviour
 
         yield return null;
     }
-
-    // Stop rolling and return to normal movement
     animator.SetBool("IsRolling", false);
 
     isRolling = false;
-}
-
-        if(Input.GetMouseButtonUp(0))
-            animator.SetBool("IsAttacking", false);
-   
     }
-    
-
-
 }
 
 
