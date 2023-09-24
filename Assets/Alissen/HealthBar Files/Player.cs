@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public InventoryObject inventory;
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Testing Collision on Item: " + other.name);
+        //Debug.Log("Testing Collision on Item: " + other.name);
 
         var item = other.GetComponent<Item>();
 
@@ -39,8 +39,17 @@ public class Player : MonoBehaviour
     void Update()
     {
         // will be changed later; just need to make sure the healtbar is up and working
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //    TakeDamage(20);
+
         if(Input.GetKeyDown(KeyCode.Space))
-            TakeDamage(20);
+        {
+            inventory.Save();
+        }
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            inventory.Load();
+        }
     }
 
     public void TakeDamage(int damage)
