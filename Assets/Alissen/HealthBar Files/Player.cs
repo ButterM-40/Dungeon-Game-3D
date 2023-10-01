@@ -9,11 +9,11 @@ public class Player : MonoBehaviour
     {
         //Debug.Log("Testing Collision on Item: " + other.name);
 
-        var item = other.GetComponent<Item>();
+        var item = other.GetComponent<GroundItem>();
 
             if (item)
             {
-                inventory.AddItem(item.item, 1);
+                inventory.AddItem(new Item(item.item), 1);
                 Destroy(other.gameObject);
             }
 
@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        inventory.Container.Clear();
+        inventory.Container.Items.Clear();
     }
     public int maxHealth=100;
     public int currentHealth;
