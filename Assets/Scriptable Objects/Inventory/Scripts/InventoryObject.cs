@@ -18,6 +18,12 @@ public class InventoryObject : ScriptableObject
 
     public void AddItem(Item _item, int _amount)
     {
+        // If item has buff, will create item and won't loop, otherwise, loops through original code
+        if(_item.buffs.Length > 0)
+        {
+            Container.Items.Add(new InventorySlot(_item.Id, _item, _amount));
+            return;
+        }
 
         //Loop through inventory and if item matches an item in the inventory, increasing its amount by one
         for(int i = 0; i < Container.Items.Count; i++)
