@@ -18,7 +18,7 @@ public class BossMove : MonoBehaviour
     bool walkPointSet;
     bool alreadyAttacked = false;
     public float attackRange = 2.0f;
-    public float attackCooldown = 2.0f;
+    public float _gravityACD = 10.0f;
     private float nextAttackTime;
 
     public Transform attackPoint;
@@ -33,71 +33,90 @@ public class BossMove : MonoBehaviour
 
     private void Awake(){
         agent = GetComponent<NavMeshAgent>();
-        Transform childTransform = transform.Find("Boss");
-        if(childTransform != null){
-            animator = childTransform.Find("NPC_2017").GetComponent<Animator>();
+        animator = transform.GetComponent<Animator>();
             if(animator != null){
                 Debug.Log("Works Animation");
             }else{
                 Debug.LogError("Child Animator not found");
             }
-        }else{
-            Debug.LogError("Child does not have an Animator Component.");
-        }
     }
 
     private void Update(){
-        
-        if(isTriggered){
+        float distance = Vector3.Distance(player.position,transform.position);
+
+        if(distance <= 2f && !alreadyAttacked){
             StartCoroutine(AttackPlayerSkill3());
-        }else{
-            ChasePlayer();
-            
+        }else if(distance <= 20f && _gravityACD <= 0f && !alreadyAttacked){
+            StartCoroutine(GravitySkill4());
         }
-        
+        else{
+            ChasePlayer();
+        }
+        Cooldowns();
     }
 
-    private void Patroling(){
-
-    }
     private void ChasePlayer(){
         agent.SetDestination(player.position);
         animator.SetBool("isActive", false);
         animator.SetInteger("isSkill", 0);
     }
+    //Basic Scyther Attack
     IEnumerator AttackPlayerSkill3(){
         agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        //transform.LookAt(player);
+        
+        Vector3 direction = (player.position-transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x,0,direction.z));
+        transform.rotation=Quaternion.Slerp(transform.rotation, lookRotation,Time.deltaTime * 5f);
 
         if(!alreadyAttacked){
             animator.SetBool("isActive", true);
             animator.SetInteger("isSkill", 3);
-            //Attack Code Here
-            //Not Implemented Yet
-            //Needs Player Healths and My Health
-            SphereCollider[] colliders = transform.Find("AttackZone3").GetComponentsInChildren<SphereCollider>();
-            foreach (SphereCollider collider in colliders)
-            {
-                collider.enabled = true;
-                StartCoroutine(Skill3(collider));
-            }
+        
             yield return new WaitForSeconds(5.0f);
-            //animator.SetBool("isActive", true);
-            //animator.SetInteger("isSkill", 3);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
-    IEnumerator Skill3(SphereCollider collider){
-        yield return new WaitForSeconds(1.0f);
-        collider.enabled = false;
+    IEnumerator GravitySkill4(){
+        agent.SetDestination(transform.position);
+        
+        Vector3 direction = (player.position-transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x,0,direction.z));
+        transform.rotation=Quaternion.Slerp(transform.rotation, lookRotation,Time.deltaTime * 5f);
+
+        if(!alreadyAttacked){
+            animator.SetBool("isActive", true);
+            animator.SetInteger("isSkill", 4);
+            yield return new WaitForSeconds(.5f);
+            while(true){
+                //  Calculate the pull direction vector
+                Vector3 pullDirection = (transform.position-player.position);
+                //  Normalize it and multiply by the force modifier
+                Vector3 pullForce = pullDirection.normalized * 1.0f;
+                float distanceToHand = Vector3.Distance (transform.position, player.position);
+                if (player.GetComponent<Rigidbody>().velocity.magnitude < 5f) {
+                    //  Add force that takes the object's mass into account
+                    player.GetComponent<Rigidbody>().AddForce (pullForce, ForceMode.Force);
+                } else {
+                    // Set a constant velocity to the object
+                    player.GetComponent<Rigidbody>().velocity = pullDirection.normalized * 5f;
+                }
+                Debug.Log(distanceToHand);
+                if(distanceToHand <= 2f){
+                    Debug.Log("Broke Out");
+                    player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    break;
+                }
+    
+                yield return null;
+            }
+            _gravityACD = 10f;
+        }
     }
     private void ResetAttack(){
         alreadyAttacked = false;
-        isTriggered = false;
-        //animator.SetBool("isActive", false);
-        //animator.SetInteger("isSkill", 0);
     }
     //Attack Triggers
     void OnTriggerEnter(Collider other){
@@ -105,13 +124,9 @@ public class BossMove : MonoBehaviour
             isTriggered = true;
             Debug.Log("Detected Player");
             other.gameObject.GetComponent<Player>().TakeDamage(20);
-
         }
     }
-    void OnTriggerStay(Collider other){
-        if(other.gameObject.tag == "Player"){
-            isTriggered = true;
-            Debug.Log("Detected Player");
-        }
+    public void Cooldowns(){
+        _gravityACD -= Time.deltaTime;
     }
 }
