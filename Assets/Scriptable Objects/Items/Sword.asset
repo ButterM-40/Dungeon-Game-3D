@@ -16,5 +16,12 @@ MonoBehaviour:
   uiDisplay: {fileID: 0}
   type: 1
   description: 'A random sword you found lying around. '
-  atkBonus: 10
-  defBonus: 0
+  buffs:
+  - attribute: 0
+    value: 0
+    min: 5
+    max: 12
+  - attribute: 3
+    value: 0
+    min: 4
+    max: 12

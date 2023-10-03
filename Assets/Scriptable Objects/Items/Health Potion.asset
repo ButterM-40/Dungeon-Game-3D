@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Health Potion
   m_EditorClassIdentifier: 
   Id: 1
-  uiDisplay: {fileID: 21300000, guid: 1540286f253a2b24195a8fcbd04cc3bd, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 70772ffa6fb69a04ebd53d15f86658ab, type: 3}
   type: 0
   description: Item that restores the player's health by 20 HP.
+  buffs: []
   restoreHealthValue: 20
