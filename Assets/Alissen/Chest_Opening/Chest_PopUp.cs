@@ -7,20 +7,21 @@ public class Chest_PopUp : MonoBehaviour
 {
     [SerializeField]
     private Image Scroll;
-    private Animator animator;
-
-    private void Start()
-    {
-
-        animator=GetComponent<Animator>();
-        animator.SetBool("isOpen",false);
-    }
+   private Animator animator;
+   
+   private void Start()
+   {
+    animator=GetComponent<Animator>();
+   }
+  
    void OnTriggerEnter(Collider other)
    {
     if(other.CompareTag("Player"))
     {
-        Scroll.enabled=true;
+       
         animator.SetBool("isOpen", true);
+        Scroll.enabled=true;
+       
     }
    }
     
@@ -29,7 +30,8 @@ public class Chest_PopUp : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             Scroll.enabled=false;
-            animator.SetBool("isOpen", false);
+            
         }
     }
-}
+    }
+
