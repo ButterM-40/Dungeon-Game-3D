@@ -14,7 +14,6 @@ public class Enemy_Controller : MonoBehaviour
     Transform target;
     NavMeshAgent agent;
     CharacterCombat combat;
-
     Animator m_Animator;
     void Start()
     {
