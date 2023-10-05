@@ -12,6 +12,7 @@ public class ItemDatabaseObject : ScriptableObject, ISerializationCallbackReceiv
     //Code that occurs after unity serializes object
     public void OnAfterDeserialize()
     {     
+        GetItem = new Dictionary<int, ItemObject>();
         for (int i = 0; i < Items.Length; i++)
         {
             Items[i].Id = i;
@@ -22,6 +23,6 @@ public class ItemDatabaseObject : ScriptableObject, ISerializationCallbackReceiv
     //Code that occurs before unity serializes object
     public void OnBeforeSerialize()
     {
-        GetItem = new Dictionary<int, ItemObject>();
+        
     }
 }

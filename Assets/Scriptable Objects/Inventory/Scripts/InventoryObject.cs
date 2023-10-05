@@ -72,8 +72,12 @@ public class InventoryObject : ScriptableObject
     {
         Container = new Inventory();
     }
+
+
     
 }
+
+
 
 [System.Serializable]
 public class Inventory
