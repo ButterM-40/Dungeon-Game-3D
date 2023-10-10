@@ -15,7 +15,10 @@ public class InventoryObject : ScriptableObject
     // public List<InventorySlot> Container = new List<InventorySlot>();
     public Inventory Container;
 
-
+    private void OnEnable()
+    {
+        database = (ItemDatabaseObject)AssetDatabase.LoadAssetAtPath("Assets/Scriptable Objects/Items/Database.asset", typeof(ItemDatabaseObject));
+    }
     public void AddItem(Item _item, int _amount)
     {
         // If item has buff, will create item and won't loop, otherwise, loops through original code
