@@ -127,6 +127,9 @@ public class ThirdPersonMovement : MonoBehaviour
 
     isRolling = false;
     }
+    // public void updateTransform(Transform newPosition){
+    //     transform = newPosition;
+    // }
 }
 
 
