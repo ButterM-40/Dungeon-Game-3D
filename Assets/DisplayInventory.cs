@@ -13,27 +13,30 @@ public class DisplayInventory : MonoBehaviour
     public int X_SPACE_BETWEEN_ITEM;
     public int NUMBER_OF_COLUMN;
     public int Y_SPACE_BETWEEN_ITEM;
+    public float Spacing_Parameters = 20;
     Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
     // Start is called before the first frame update
     void Start()
-    {
+    {        
         CreateDisplay();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        UpdateDisplay();
-    }
+    // void Update()
+    // {
+    //     UpdateDisplay();
+    // }
 
     public void UpdateDisplay()
     {
         
-
+        Debug.Log("Updated");
 
         for(int i = 0; i < inventory.Container.Items.Count; i++)
         {
+            //Debug.Log("Run Number: " + inventory.Container.Items.Count);
             InventorySlot slot = inventory.Container.Items[i];
+            int CurrentItems = inventory.Container.Items.Count;
 
             if (itemsDisplayed.ContainsKey(slot))
             {
@@ -42,6 +45,7 @@ public class DisplayInventory : MonoBehaviour
             else
             {
                 var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+                obj.GetComponent<RectTransform>().localPosition = new Vector3(-110 + (CurrentItems * Spacing_Parameters),109,0);
                 obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[slot.item.Id].uiDisplay;
                 obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
                 obj.GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
@@ -55,9 +59,12 @@ public class DisplayInventory : MonoBehaviour
     {
         for (int i = 0; i < inventory.Container.Items.Count; i++)
         {
+            int CurrentItems = inventory.Container.Items.Count;
             InventorySlot slot = inventory.Container.Items[i];
-
+            Debug.Log(i);
+            //Vector3 location = new Vector3(-110 + (i * Spacing_Parameters),109,0);
             var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+            obj.GetComponent<RectTransform>().localPosition = new Vector3(-110 + (CurrentItems * Spacing_Parameters),109,0);
             obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[slot.item.Id].uiDisplay;
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             obj.GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");

@@ -68,6 +68,7 @@ public class InventoryObject : ScriptableObject
             Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Open, FileAccess.Read);
             Container = (Inventory)formatter.Deserialize(stream);
             stream.Close();
+            //InventoryUpdater.CreateDisplay();
         }
     }
     [ContextMenu("Clear")]
