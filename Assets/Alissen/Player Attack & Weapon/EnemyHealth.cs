@@ -20,6 +20,7 @@ public class EnemyHealth : MonoBehaviour
   {
     if(other.CompareTag("Weapon"))
     {
+      Debug.Log("Hit");
         currentHealth-=damagerPerSwing;
         if(currentHealth<=0)
             Die();

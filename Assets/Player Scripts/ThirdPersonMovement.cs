@@ -82,7 +82,7 @@ public class ThirdPersonMovement : MonoBehaviour
         }
 
         if(Input.GetMouseButtonUp(0)){
-            animator.SetBool("IsAttacking", false);
+                animator.SetBool("IsAttacking", false);
         }
 
         if (Input.GetKey(KeyCode.Space))
@@ -100,13 +100,13 @@ public class ThirdPersonMovement : MonoBehaviour
     animator.SetBool("IsRunning", false);
     animator.SetBool("IsMoving", false);
     Debug.Log("Running Test");
-
+    yield return new WaitForSeconds(0.2f);
     // Get the character's current forward direction (assuming it's facing forward)
     Vector3 rollDirection = transform.forward; // Adjust this as needed
 
     // Apply a force to move the character in the rollDirection
     float rollSpeed = 5.0f; // Adjust this as needed
-    float rollingDuration = 1.4f; // Adjust this as needed
+    float rollingDuration = 2.0f; // Adjust this as needed
 
     // Calculate the distance to move during the roll based on the rollSpeed and duration
     float rollDistance = rollSpeed * rollingDuration;
