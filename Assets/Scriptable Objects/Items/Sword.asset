@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588fa785a394c214f826676ea6c6f96f, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6032116198441086067, guid: 745e3e3341332854d8e34458d3136ca3, type: 3}
+  Id: 2
+  uiDisplay: {fileID: 0}
   type: 1
   description: 'A random sword you found lying around. '
-  atkBonus: 10
-  defBonus: 0
+  buffs:
+  - attribute: 0
+    value: 0
+    min: 5
+    max: 12
+  - attribute: 3
+    value: 0
+    min: 4
+    max: 12
