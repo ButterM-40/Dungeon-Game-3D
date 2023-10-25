@@ -1745,7 +1745,7 @@ GameObject:
   - component: {fileID: 6047099017376628545}
   m_Layer: 0
   m_Name: Character_Skeleton_Slave_01
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
