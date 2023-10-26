@@ -14,6 +14,7 @@ public class Spawn_Enemy : MonoBehaviour
      Transform target1;
     float xPos;
     float zPos;
+    float ypos;
     float randomx;
     float randomz;
 
@@ -22,13 +23,14 @@ public class Spawn_Enemy : MonoBehaviour
     target1 = Player_Manager.instance.player.transform;
     xPos = transform.position.x;
     zPos = transform.position.z;
+    ypos = transform.position.y;
          for (int i = 0; i < 5; i++) // Spawn 5 enemies as an example
         {
             // Vector3 randomPosition = Random.insideUnitSphere * spawnRange;
             // randomPosition.y = -5; // Ensure enemies are spawned at the same height
             randomx = Random.Range(xPos, xPos+5);
             randomz = Random.Range(zPos, zPos+5);
-            Instantiate(enemyPrefab, new Vector3(randomx,-4,randomz),Quaternion.identity);
+            Instantiate(enemyPrefab, new Vector3(randomx,ypos,randomz),Quaternion.identity);
         }
     Debug.Log("ITS ON AGAIN BABY");
     }
