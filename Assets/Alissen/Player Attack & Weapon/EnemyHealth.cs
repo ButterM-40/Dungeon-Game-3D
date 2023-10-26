@@ -32,7 +32,8 @@ public class EnemyHealth : MonoBehaviour
     //Should be implemented in next sprint
     //animator.SetTrigger("DEATH");
     Debug.Log("Stuff");
-    Instantiate(Drop, Vector3.zero, Quaternion.identity, transform);
+    Instantiate(Drop, transform.position, Quaternion.identity);
+    Drop.transform.SetParent(null);
     Destroy(gameObject, 2f);
 
   }

@@ -7571,6 +7571,33 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!4 &325593150 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 982023951953634042, guid: 049e3fecb12d5794fa55c7c536b495ba, type: 3}
+  m_PrefabInstance: {fileID: 982023952603969890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &325593151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325593141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9599b4f8f86eae24c9ba13b46e9c05f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1620966358}
+  crystalPrefabs:
+  - {fileID: 3559567856748031622, guid: fd2028d171102ab41b2a3893f47b6f4f, type: 3}
+  - {fileID: 2232920503977056914, guid: 968ba2930cd3b21499afa3a43e839753, type: 3}
+  - {fileID: 4038185058110687901, guid: ca4954f8831241c4aa74e18ea511c29f, type: 3}
+  - {fileID: 1104825926768449169, guid: 55738274ceb1bca46b4667a092d4ffdb, type: 3}
+  crystalsParent: {fileID: 1489086558}
+  numberOfCrystals: 10
+  ringRadius: 5
+  ringHeight: 2
 --- !u!4 &325618810 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2170722029591856156, guid: 5bc015d244d05dd488b545f48c8889e8, type: 3}
@@ -32199,6 +32226,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2170722029591856156, guid: 5bc015d244d05dd488b545f48c8889e8, type: 3}
   m_PrefabInstance: {fileID: 695739985}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1489086558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1489086559}
+  m_Layer: 0
+  m_Name: cystalsParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1489086559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489086558}
+  m_LocalRotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3.181389, y: 3.1813884, z: 3.1813884}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 325593150}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: -90, y: 90, z: -90}
 --- !u!1001 &1490137527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46344,5 +46402,8 @@ PrefabInstance:
     - {fileID: 982023952660433662, guid: 049e3fecb12d5794fa55c7c536b495ba, type: 3}
     - {fileID: 982023952660433663, guid: 049e3fecb12d5794fa55c7c536b495ba, type: 3}
     - {fileID: 982023952660433657, guid: 049e3fecb12d5794fa55c7c536b495ba, type: 3}
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 982023951953634042, guid: 049e3fecb12d5794fa55c7c536b495ba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1489086559}
   m_SourcePrefab: {fileID: 100100000, guid: 049e3fecb12d5794fa55c7c536b495ba, type: 3}
