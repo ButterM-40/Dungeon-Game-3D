@@ -32,7 +32,7 @@ public class Spawn_Enemy : MonoBehaviour
             randomz = Random.Range(zPos, zPos+5);
             Instantiate(enemyPrefab, new Vector3(randomx,ypos,randomz),Quaternion.identity);
         }
-    Debug.Log("ITS ON AGAIN BABY");
+   // Debug.Log("ITS ON AGAIN BABY");
     }
     private void OnDisable()
     {
