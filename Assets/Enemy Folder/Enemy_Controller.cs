@@ -41,7 +41,7 @@ public class Enemy_Controller : MonoBehaviour
         float distance = Vector3.Distance(target.position,transform.position);
         if (distance <= lookRadius)
         {
-            print(attack);
+//            print(attack);
            agent.SetDestination(target.position);
            if (distance <= agent.stoppingDistance)
            {

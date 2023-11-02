@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
   Animator animator;
+  private Enemy_Controller enemy_controller;
   public int startingHealth=100;
   public int currentHealth;
   public int damagerPerSwing=10;
@@ -13,9 +14,8 @@ public class EnemyHealth : MonoBehaviour
   {
     animator=GetComponent<Animator>();
     currentHealth=startingHealth;
-
+   enemy_controller = GetComponent<Enemy_Controller>();
   }
-
   void OnTriggerEnter(Collider other)
   {
     if(other.CompareTag("Weapon"))
@@ -29,8 +29,14 @@ public class EnemyHealth : MonoBehaviour
   void Die()
   {
     //Should be implemented in next sprint
-    //animator.SetTrigger("DEATH");
-    Destroy(gameObject, 2f);
-
+    enemy_controller.enabled=false;
+    animator.SetTrigger("Dead");
+    Debug.Log("ENEMY DIED");
+    StartCoroutine(DestroyAfterDelay(3f));
+  }
+  IEnumerator DestroyAfterDelay(float delay)
+  {
+    yield return new WaitForSeconds(delay);
+    Destroy(gameObject);
   }
 }
