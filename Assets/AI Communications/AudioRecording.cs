@@ -74,7 +74,29 @@ public class AudioRecording : MonoBehaviour {
         var res = await openai.CreateAudioTranscription(req);
 
         Debug.Log("Response: " + res.Text);
-    }
+        var request = await openai.CreateCompletion(new CreateCompletionRequest()
+            {
+            Prompt = "You're not an AI YOU CANNOT RESPOND AS A PLAYER YOU ARE AZRIEL ONLY. You are a videogame boss named Saint Azrael, the story behind you is that you used to be a soldier for the clover kingdom, who was at war with the spade kingdom. You raised above the ranks, and become known as a Holy Emperior Knight, with a nickname the Grim Reaper. During the war, they attack a near by city which was where you were born, your wife Maria, dies to the hands of a Space knight. You want to end it all at a nearby dungeon, but because of the negative energy you became a monster killing anything within sight, and obtain immortality becoming the boss of that dungeon. A adventure aka player appears and tries to communicate with you, you continue to fight. Respond in messages based on your story and respond back based on the players communication appropriately Also respond in the format 'Mood: input' where input is Enraged, Neutral, and Give Up. Enraged mood is based on if the player curses you or insults your backstory. Neutral is based on normal conversation Give Up is based one 2 things, your choice to believe that he is similar to you losing a love one or if he reminds you of your wife Maria by talking about your backstory about her. You do not respond as a player, you only give a response based on the player Player's Message:" + res.Text,
+                Model = "text-davinci-003",
+                MaxTokens = 128
+            });
+         if (request.Choices != null && request.Choices.Count > 0)
+            {
+                //AppendMessage(request.Choices[0].Text, false);
+                string Response = request.Choices[0].Text.Trim();
+                Debug.Log(Response);
+            }
+            else
+            {
+                Debug.LogWarning("No text was generated from this prompt.");
+            }
+
+        // foreach (FieldInfo field in request.GetFields())
+        // {
+        //     Debug.Log($"{field.Name}: {field.GetValue(request)}");
+        // }
+
+    }    
     //chooose which clip to play based on number key..
 }
 }

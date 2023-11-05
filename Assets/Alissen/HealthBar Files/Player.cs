@@ -5,23 +5,29 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public InventoryObject inventory;
+    public DisplayInventory InventoryUpdater;
     public void OnTriggerEnter(Collider other)
     {
         //Debug.Log("Testing Collision on Item: " + other.name);
-
-        var item = other.GetComponent<Item>();
-
+        
+        var item = other.GetComponent<GroundItem>();
+            // if(InventoryUpdater.GetComponent<DisplayInventory>())
+            // {
+            //     Debug.Log("Not here");
+            // }
             if (item)
             {
-                inventory.AddItem(item.item, 1);
+                inventory.AddItem(new Item(item.item), 1);
                 Destroy(other.gameObject);
+                InventoryUpdater.UpdateDisplay();
+                //InventoryUpdater.GetComponent<DisplayInventory>().UpdateDisplay();
             }
 
     }
 
     private void OnApplicationQuit()
     {
-        inventory.Container.Clear();
+        inventory.Container.Items.Clear();
     }
     public int maxHealth=100;
     public int currentHealth;
@@ -46,12 +52,25 @@ public class Player : MonoBehaviour
         {
             inventory.Save();
         }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            InventoryUpdater.CreateDisplay();
+        }
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
+            //StartCoroutine(LoadTimer());
             inventory.Load();
         }
     }
+    IEnumerator LoadTimer()
+    {
+        
+        inventory.Load();
+        yield return new WaitForSeconds(5f);
+        InventoryUpdater.CreateDisplay();
 
+        
+    }
     public void TakeDamage(int damage)
     {
         currentHealth-=damage;
