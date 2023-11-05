@@ -63,9 +63,9 @@ public class DisplayInventory : MonoBehaviour
             InventorySlot slot = inventory.Container.Items[i];
             Debug.Log(i);
             //Vector3 location = new Vector3(-110 + (i * Spacing_Parameters),109,0);
-            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+            GameObject obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
             obj.GetComponent<RectTransform>().localPosition = new Vector3(-110 + (CurrentItems * Spacing_Parameters),109,0);
-            obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[slot.item.Id].uiDisplay;
+            // obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[slot.item.Id].uiDisplay;
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             obj.GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
 
