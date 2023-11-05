@@ -122,8 +122,14 @@ public class BossMove : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if(other.gameObject.tag == "Player"){
             isTriggered = true;
-            Debug.Log("Detected Player");
+            //Debug.Log("Detected Player");
             other.gameObject.GetComponent<Player>().TakeDamage(20);
+        }
+    }
+    void OnTriggerStay(Collider other){
+        if(other.gameObject.tag == "Player"){
+            isTriggered = true;
+            //Debug.Log("Detected Player");
         }
     }
     public void Cooldowns(){
