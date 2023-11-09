@@ -15,6 +15,12 @@ public class Enemy_Controller : MonoBehaviour
 
     private float attack;
 
+    // ***************
+    public float attackDelay = 2f; // Time delay before the enemy inflicts damage
+    private float attackTimer = 0f;
+    // ***************
+
+
 
 
     Transform target;
@@ -29,45 +35,65 @@ public class Enemy_Controller : MonoBehaviour
         m_Animator=GetComponent<Animator>();
         attack = delayAttack;
     }
-    // void OnCollisionEnter(Collision test)
-    // {
-    //     if(test.gameObject.tag == "Player")
-    //     {
-    //         Debug.Log("ASMDASD");
-    //     }
-    // }
     void Update()
     {
         float distance = Vector3.Distance(target.position,transform.position);
         if (distance <= lookRadius)
         {
-//            print(attack);
            agent.SetDestination(target.position);
            if (distance <= agent.stoppingDistance)
            {
-            attack -= Time.deltaTime;
             FaceTarget();
-            if (Time.time >= nextAttackTime)
-            {
             m_Animator.SetBool("Attacking",true);
-            if (attack <= 0f)
+            if (m_Animator.GetBool("Attacking") == true)
+            {
+                attackTimer += Time.deltaTime;
+            }
+            if (attackTimer >= attackDelay)
             {
             target.GetComponent<Player>().TakeDamage(10);
-             attack=delayAttack;
-            }
-            nextAttackTime = Time.time+attackCooldown;
-            }
-            else
-            {
+            attackTimer=0f;
              m_Animator.SetBool("Attacking",false);
             }
            }
-         else
-            {
-                attack=delayAttack;
-            }
+           else
+           {
+              m_Animator.SetBool("Attacking",false);
+              attackTimer=0f;
+           } 
         }
     }
+    // void Update()
+    // {
+    //     float distance = Vector3.Distance(target.position,transform.position);
+    //     if (distance <= lookRadius)
+    //     {
+    //        agent.SetDestination(target.position);
+    //        if (distance <= agent.stoppingDistance)
+    //        {
+    //         attack -= Time.deltaTime;
+    //         FaceTarget();
+    //         if (Time.time >= nextAttackTime)
+    //         {
+    //         m_Animator.SetBool("Attacking",true);
+    //         if (attack <= 0f)
+    //         {
+    //         target.GetComponent<Player>().TakeDamage(10);
+    //          attack=delayAttack;
+    //         }
+    //         nextAttackTime = Time.time+attackCooldown;
+    //         }
+    //         else
+    //         {
+    //          m_Animator.SetBool("Attacking",false);
+    //         }
+    //        }
+    //      else
+    //         {
+    //             attack=delayAttack;
+    //         }
+    //     }
+    // }
     void FaceTarget()
     {
         Vector3 direction = (target.position-transform.position).normalized;

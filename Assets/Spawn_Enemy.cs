@@ -9,7 +9,8 @@ public class Spawn_Enemy : MonoBehaviour
     // Start is called before the first frame update
     public float spawnRange = 1f;
     private float destroyRange = 40f;
-    public GameObject enemyPrefab;
+    public GameObject Enemy_Skeleton;
+    public GameObject Enemy_Goblin;
  private Player_Spawner_Range player_spawner_range;
      Transform target1;
     float xPos;
@@ -24,15 +25,16 @@ public class Spawn_Enemy : MonoBehaviour
     xPos = transform.position.x;
     zPos = transform.position.z;
     ypos = transform.position.y;
-         for (int i = 0; i < 5; i++) // Spawn 5 enemies as an example
-        {
             // Vector3 randomPosition = Random.insideUnitSphere * spawnRange;
             // randomPosition.y = -5; // Ensure enemies are spawned at the same height
             randomx = Random.Range(xPos, xPos+5);
             randomz = Random.Range(zPos, zPos+5);
-            Instantiate(enemyPrefab, new Vector3(randomx,ypos,randomz),Quaternion.identity);
-        }
-   // Debug.Log("ITS ON AGAIN BABY");
+            int enemy1Count = Random.Range(0, 5 + 1); // Random count of enemy1
+            int enemy2Count = 5 - enemy1Count; // Remaining count for enemy2
+            Spawner_Enemy(enemy1Count, Enemy_Skeleton);
+            Spawner_Enemy(enemy2Count, Enemy_Goblin);
+          //  Instantiate(enemyPrefab, new Vector3(randomx,ypos,randomz),Quaternion.identity);
+          // Debug.Log("ITS ON AGAIN BABY");
     }
     private void OnDisable()
     {
@@ -46,6 +48,16 @@ public class Spawn_Enemy : MonoBehaviour
             {
                 Destroy(enemy);
             }
+        }
+    }
+    void Spawner_Enemy(int count, GameObject enemyType)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 spawnPosition = transform.position + Random.insideUnitSphere * spawnRange;
+            spawnPosition.y = 0; // Ensure the enemies spawn on the same plane
+
+            Instantiate(enemyType, spawnPosition, Quaternion.identity);
         }
     }
     // void Start()

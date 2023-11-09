@@ -79,10 +79,14 @@ public class Player : MonoBehaviour
     {
         currentHealth-=damage;
         healthBar.SetHealth(currentHealth);
+        if (currentHealth >= 1f)
+        {
+         thirdpersonmovement.TakeDamage();
+        }
         if(currentHealth == 0f)
         {
             thirdpersonmovement.Die();
-            Debug.Log("CALLED FUNCTION");
+            //Debug.Log("CALLED FUNCTION");
         }
     }
 

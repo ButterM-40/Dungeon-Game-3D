@@ -134,7 +134,7 @@ public class ThirdPersonMovement : MonoBehaviour
   {
     //Should be implemented in next sprint
    // enemy_controller.enabled=false;
-   Debug.Log("WORKED");
+    Debug.Log("WORKED");
     animator.SetTrigger("Dead");
     StartCoroutine(DestroyAfterDelay(3f));
   }
@@ -142,6 +142,10 @@ public class ThirdPersonMovement : MonoBehaviour
   {
     yield return new WaitForSeconds(delay);
     Destroy(gameObject);
+  }
+  public void TakeDamage()
+  {
+    animator.SetTrigger("Hit");
   }
 }
 
