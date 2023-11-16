@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Windows.Speech;
+using System;
+using TMPro.Examples;
 
 namespace OpenAI
 {
@@ -83,8 +85,20 @@ public class AudioRecording : MonoBehaviour {
          if (request.Choices != null && request.Choices.Count > 0)
             {
                 //AppendMessage(request.Choices[0].Text, false);
-                string Response = request.Choices[0].Text.Trim();
-                Debug.Log(Response);
+                //string Response = request.Choices[0].Text.Trim();
+                //Debug.Log(Response);
+                string response = request.Choices[0].Text.Trim();
+                string[] parts = response.Split(new string[] { "Mood: " }, StringSplitOptions.None);
+
+                if (parts.Length > 1)
+                {
+                    string mood = parts[1].Split(' ')[0].Trim();
+                    Debug.Log("Mood: " + mood);
+                    Debug.Log(mood);
+                    // Now 'mood' contains the extracted mood (Enraged, Neutral, or Give Up)
+                    // You can use 'mood' as needed in your code.
+                }
+                
             }
             else
             {
