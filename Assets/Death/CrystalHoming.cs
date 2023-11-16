@@ -32,9 +32,12 @@ public class CrystalHoming : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Check if the object collided with a trigger collider.
-        if (other.isTrigger)
+        if(other.gameObject.tag == "Player")
         {
+            other.gameObject.GetComponent<Player>().TakeDamage(20);
+            Debug.Log("Meow");
             isMoving = false; // Stop moving when a trigger is hit.
+            Destroy(gameObject);
         }
     }
     public void SetParameters(Transform target1)
