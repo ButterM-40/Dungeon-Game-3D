@@ -8,6 +8,7 @@ namespace OpenAI
 {
 public class AudioRecording : MonoBehaviour {
  
+    public ElevensLab elevensLabInstance;
     bool isRecording = false;
     bool hasPressedX = false;
     private AudioSource audioSource;
@@ -33,8 +34,10 @@ public class AudioRecording : MonoBehaviour {
             Debug.Log("Testing");
             isRecording = true;
             hasPressedX = true;
+            AudioPlay();
             if(isRecording){
-                audioSource.clip = Microphone.Start(null, false, duration, 44100);
+                //audioSource.clip = Microphone.Start(null, false, duration, 44100);
+                Debug.Log("Testing");
             }
         }
         if (isRecording)
@@ -46,13 +49,16 @@ public class AudioRecording : MonoBehaviour {
                     time = 0;
                     isRecording = false;
                     hasPressedX = false;
-                    EndRecording();
+                    //EndRecording();
                 }
             }
     }
  
     void AudioPlay(){
-        audioSource.Play();
+        //audioSource.Play();
+        //elevensLabInstance.GetComponent<ElevensLab>().StartEvent("Hello Hello Hello");
+        elevensLabInstance.StartEvent("Hello Hello Hello");
+        Debug.Log("Aduio");
     }
     
 
@@ -88,15 +94,19 @@ public class AudioRecording : MonoBehaviour {
                 //string Response = request.Choices[0].Text.Trim();
                 //Debug.Log(Response);
                 string response = request.Choices[0].Text.Trim();
-                string[] parts = response.Split(new string[] { "Mood: " }, StringSplitOptions.None);
+                if (response.Contains("Mood: ")) {
+                    // Split the response by "Mood: "
+                    string[] parts = response.Split(new string[] { "Mood: " }, StringSplitOptions.RemoveEmptyEntries);
 
-                if (parts.Length > 1)
-                {
-                    string mood = parts[1].Split(' ')[0].Trim();
-                    Debug.Log("Mood: " + mood);
-                    Debug.Log(mood);
-                    // Now 'mood' contains the extracted mood (Enraged, Neutral, or Give Up)
-                    // You can use 'mood' as needed in your code.
+                    // Extract the mood (assuming the mood is the first word after "Mood: ")
+                    string mood = parts[parts.Length - 1].Split(' ')[0].Trim();
+                    string GPTResponse = response.Substring(response.IndexOf(mood) + mood.Length).Trim();
+                    Console.WriteLine("Mood: " + mood);
+                    Console.WriteLine("GPTResponse: " + GPTResponse);
+                    elevensLabInstance.GetComponent<ElevensLab>().StartEvent("GPTResponse");
+                
+                } else {
+                    Console.WriteLine("Mood not found in the response.");
                 }
                 
             }
