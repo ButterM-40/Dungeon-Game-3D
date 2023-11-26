@@ -34,9 +34,9 @@ public class AudioRecording : MonoBehaviour {
             Debug.Log("Testing");
             isRecording = true;
             hasPressedX = true;
-            AudioPlay();
+            //AudioPlay();
             if(isRecording){
-                //audioSource.clip = Microphone.Start(null, false, duration, 44100);
+                audioSource.clip = Microphone.Start(null, false, duration, 44100);
                 Debug.Log("Testing");
             }
         }
@@ -49,7 +49,7 @@ public class AudioRecording : MonoBehaviour {
                     time = 0;
                     isRecording = false;
                     hasPressedX = false;
-                    //EndRecording();
+                    EndRecording();
                 }
             }
     }
@@ -57,7 +57,7 @@ public class AudioRecording : MonoBehaviour {
     void AudioPlay(){
         //audioSource.Play();
         //elevensLabInstance.GetComponent<ElevensLab>().StartEvent("Hello Hello Hello");
-        elevensLabInstance.StartEvent("Hello Hello Hello");
+        //elevensLabInstance.StartEvent("Hello Hello Hello");
         Debug.Log("Aduio");
     }
     
