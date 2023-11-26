@@ -14,7 +14,7 @@ public class CrystalHoming : MonoBehaviour
     {
         if (isMoving && target != null)
         {
-            Debug.Log("Run");
+            //Debug.Log("Run");
             // Calculate the direction to move towards the target.
             Vector3 moveDirection = (target.position - transform.position).normalized;
 
@@ -35,7 +35,7 @@ public class CrystalHoming : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<Player>().TakeDamage(20);
-            Debug.Log("Meow");
+            //Debug.Log("Meow");
             isMoving = false; // Stop moving when a trigger is hit.
             Destroy(gameObject);
         }

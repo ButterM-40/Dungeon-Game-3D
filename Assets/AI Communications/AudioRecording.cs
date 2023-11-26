@@ -34,10 +34,10 @@ public class AudioRecording : MonoBehaviour {
             Debug.Log("Testing");
             isRecording = true;
             hasPressedX = true;
-            AudioPlay();
+            //AudioPlay();
             if(isRecording){
-                //audioSource.clip = Microphone.Start(null, false, duration, 44100);
-                Debug.Log("Testing");
+                audioSource.clip = Microphone.Start(null, false, duration, 44100);
+                //Debug.Log("Testing");
             }
         }
         if (isRecording)
@@ -49,7 +49,7 @@ public class AudioRecording : MonoBehaviour {
                     time = 0;
                     isRecording = false;
                     hasPressedX = false;
-                    //EndRecording();
+                    EndRecording();
                 }
             }
     }
@@ -91,8 +91,8 @@ public class AudioRecording : MonoBehaviour {
          if (request.Choices != null && request.Choices.Count > 0)
             {
                 //AppendMessage(request.Choices[0].Text, false);
-                //string Response = request.Choices[0].Text.Trim();
-                //Debug.Log(Response);
+                string Response = request.Choices[0].Text.Trim();
+                Debug.Log(Response);
                 string response = request.Choices[0].Text.Trim();
                 if (response.Contains("Mood: ")) {
                     // Split the response by "Mood: "
@@ -103,7 +103,8 @@ public class AudioRecording : MonoBehaviour {
                     string GPTResponse = response.Substring(response.IndexOf(mood) + mood.Length).Trim();
                     Console.WriteLine("Mood: " + mood);
                     Console.WriteLine("GPTResponse: " + GPTResponse);
-                    elevensLabInstance.GetComponent<ElevensLab>().StartEvent("GPTResponse");
+                    elevensLabInstance.StartEvent(GPTResponse);
+                    //elevensLabInstance.GetComponent<ElevensLab>().StartEvent("GPTResponse");
                 
                 } else {
                     Console.WriteLine("Mood not found in the response.");
