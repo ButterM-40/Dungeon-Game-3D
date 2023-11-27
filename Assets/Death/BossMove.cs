@@ -5,31 +5,20 @@ using UnityEngine.AI;
 
 public class BossMove : MonoBehaviour
 {
+    public Transform player;
     NavMeshAgent agent;
     // MoveTo.cs
-    public Collider StartAttackZone;
     private bool isTriggered = false;
     public Transform goal;
     private int health;
     private Animator animator;
-    public Transform player;
-    public LayerMask whatIsGround, whatIsPlayer;
-    public Vector3 walkPoint;
-    bool walkPointSet;
+    
     bool alreadyAttacked = false;
-    public float attackRange = 2.0f;
     public float _gravityACD = 10.0f;
     private float nextAttackTime;
-
-    public Transform attackPoint;
-    public LayerMask playerLayer;
     //Attacking
+    public float CrystalTimer = 10f;
     public float timeBetweenAttacks;
-    bool isAttacking;
-
-    //States
-    public float sightRange;
-    public bool playerInSightRange, playerInAttackRange;
 
     private void Awake(){
         agent = GetComponent<NavMeshAgent>();
@@ -48,10 +37,15 @@ public class BossMove : MonoBehaviour
             StartCoroutine(AttackPlayerSkill3());
         }else if(distance <= 20f && _gravityACD <= 0f && !alreadyAttacked){
             StartCoroutine(GravitySkill4());
+            alreadyAttacked = false;
+        }
+        else if(CrystalTimer <= 0 && CrystalTimer <= 0f && !alreadyAttacked){
+            StartCoroutine(CrystalAttack());
         }
         else{
             ChasePlayer();
         }
+        
         Cooldowns();
     }
 
@@ -90,6 +84,7 @@ public class BossMove : MonoBehaviour
             animator.SetBool("isActive", true);
             animator.SetInteger("isSkill", 4);
             yield return new WaitForSeconds(.5f);
+            float timer = 5f;
             while(true){
                 //  Calculate the pull direction vector
                 Vector3 pullDirection = (transform.position-player.position);
@@ -104,16 +99,23 @@ public class BossMove : MonoBehaviour
                     player.GetComponent<Rigidbody>().velocity = pullDirection.normalized * 5f;
                 }
                 Debug.Log(distanceToHand);
-                if(distanceToHand <= 2f){
+                if(distanceToHand <= 2f || timer <= 0){
                     Debug.Log("Broke Out");
                     player.GetComponent<Rigidbody>().velocity = Vector3.zero;
                     break;
                 }
+                timer -= Time.deltaTime;
     
                 yield return null;
             }
             _gravityACD = 10f;
         }
+    }
+    IEnumerator CrystalAttack(){
+        transform.GetComponent<CrystalThrow>().CreateCrystalRing();
+        CrystalTimer = 10f;
+        Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        yield return null;
     }
     private void ResetAttack(){
         alreadyAttacked = false;
@@ -134,5 +136,7 @@ public class BossMove : MonoBehaviour
     }
     public void Cooldowns(){
         _gravityACD -= Time.deltaTime;
+        CrystalTimer -= Time.deltaTime;
+
     }
 }
