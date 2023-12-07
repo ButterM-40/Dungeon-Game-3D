@@ -55,7 +55,7 @@ public class Spawn_Enemy : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             Vector3 spawnPosition = transform.position + Random.insideUnitSphere * spawnRange;
-            spawnPosition.y = 0; // Ensure the enemies spawn on the same plane
+            spawnPosition.y = transform.position.y; // Ensure the enemies spawn on the same plane
 
             Instantiate(enemyType, spawnPosition, Quaternion.identity);
         }
