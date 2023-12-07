@@ -14,10 +14,12 @@ public class BossMove : MonoBehaviour
     private Animator animator;
     
     bool alreadyAttacked = false;
-    public float _gravityACD = 10.0f;
+    public float _gravityACD = 30.0f;
     private float nextAttackTime;
     //Attacking
-    public float CrystalTimer = 10f;
+    public float CrystalTimer = 40f;
+    public float _gravityACDSet = 25.0f;
+    public float CrystalTimerSet = 20f;
     public float timeBetweenAttacks;
 
     private void Awake(){
@@ -39,7 +41,7 @@ public class BossMove : MonoBehaviour
             StartCoroutine(GravitySkill4());
             alreadyAttacked = false;
         }
-        else if(CrystalTimer <= 0 && CrystalTimer <= 0f && !alreadyAttacked){
+        else if(CrystalTimer <= 0 && !alreadyAttacked){
             StartCoroutine(CrystalAttack());
         }
         else{
@@ -98,9 +100,9 @@ public class BossMove : MonoBehaviour
                     // Set a constant velocity to the object
                     player.GetComponent<Rigidbody>().velocity = pullDirection.normalized * 5f;
                 }
-                Debug.Log(distanceToHand);
+                //Debug.Log(distanceToHand);
                 if(distanceToHand <= 2f || timer <= 0){
-                    Debug.Log("Broke Out");
+                    //Debug.Log("Broke Out");
                     player.GetComponent<Rigidbody>().velocity = Vector3.zero;
                     break;
                 }
@@ -108,12 +110,12 @@ public class BossMove : MonoBehaviour
     
                 yield return null;
             }
-            _gravityACD = 10f;
+            _gravityACD = _gravityACDSet;
         }
     }
     IEnumerator CrystalAttack(){
         transform.GetComponent<CrystalThrow>().CreateCrystalRing();
-        CrystalTimer = 10f;
+        CrystalTimer = CrystalTimerSet;
         Invoke(nameof(ResetAttack), timeBetweenAttacks);
         yield return null;
     }
@@ -124,7 +126,7 @@ public class BossMove : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if(other.gameObject.tag == "Player"){
             isTriggered = true;
-            //Debug.Log("Detected Player");
+            Debug.Log("Detected Player");
             other.gameObject.GetComponent<Player>().TakeDamage(20);
         }
     }
@@ -138,5 +140,25 @@ public class BossMove : MonoBehaviour
         _gravityACD -= Time.deltaTime;
         CrystalTimer -= Time.deltaTime;
 
+    }
+    public void BossMood(string mood){
+        if(mood == "Enraged"){
+            EnragedBoss();
+        }
+        else if (mood == "Give Up"){
+            giveUpBoss();
+        }
+    }
+    
+    private void giveUpBoss(){
+        Destroy(gameObject);
+    }
+    private void BossDies(){
+        Destroy(gameObject);
+    }
+    private void EnragedBoss(){
+        Debug.Log("Oh No im mad!?!");
+        _gravityACDSet -= 1.5f;
+        CrystalTimerSet -= 1.5f;
     }
 }

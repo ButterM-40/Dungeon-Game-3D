@@ -7,14 +7,14 @@ using TMPro.Examples;
 namespace OpenAI
 {
 public class AudioRecording : MonoBehaviour {
- 
     public ElevensLab elevensLabInstance;
     bool isRecording = false;
     bool hasPressedX = false;
     private AudioSource audioSource;
     private readonly int duration = 5;
     private float time;
- 
+    private int com_counter = 0;
+    public GameObject BossMove;
     //temporary audio vector we write to every second while recording is enabled..
     private readonly string fileName = "output.wav";
     List<float> tempRecording = new List<float>();
@@ -65,6 +65,7 @@ public class AudioRecording : MonoBehaviour {
     private async void EndRecording()
     {
         //message.text = "Transcripting...";
+        com_counter++;
         Debug.Log("Transcripting");
         #if !UNITY_WEBGL
         Microphone.End(null);
@@ -104,12 +105,21 @@ public class AudioRecording : MonoBehaviour {
                     Console.WriteLine("Mood: " + mood);
                     Console.WriteLine("GPTResponse: " + GPTResponse);
                     elevensLabInstance.StartEvent(GPTResponse);
+                    
                     //elevensLabInstance.GetComponent<ElevensLab>().StartEvent("GPTResponse");
                 
                 } else {
                     Console.WriteLine("Mood not found in the response.");
                 }
-                
+                if(com_counter == 2){
+                        if(response.Contains("Enraged")){
+                            BossMove.GetComponent<BossMove>().BossMood("Enraged");
+                        }
+                    }else if (com_counter == 3){
+                        if(response.Contains("Give Up")){
+                            BossMove.GetComponent<BossMove>().BossMood("Give Up");
+                        }
+                    }
             }
             else
             {

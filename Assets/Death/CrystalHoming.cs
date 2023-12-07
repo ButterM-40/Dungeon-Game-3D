@@ -10,6 +10,7 @@ public class CrystalHoming : MonoBehaviour
 
     private bool isMoving = true;
     private Transform position1;
+    private float destroyObjectTime = 30f;
     private void Update()
     {
         if (isMoving && target != null)
@@ -28,6 +29,10 @@ public class CrystalHoming : MonoBehaviour
                 isMoving = false;
             }
         }
+        if(destroyObjectTime <= 0f){
+            Destroy(gameObject);
+        }
+        destroyObjectTime -= Time.deltaTime;
     }
     private void OnTriggerEnter(Collider other)
     {
