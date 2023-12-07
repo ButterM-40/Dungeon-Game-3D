@@ -15,11 +15,11 @@ public class CrystalThrow : MonoBehaviour
         Vector3 initialPosition = transform.position;
         initialPosition.y = 3f; // Set the y-axis position to 3.
         crystalsParent.transform.position = initialPosition;
-        CreateCrystalRing();
+        //CreateCrystalRing();
         //crystalsParent.transform.rotation = Quaternion.Euler(-90f, 90f, -90f);
     }
 
-    private void CreateCrystalRing()
+    public void CreateCrystalRing()
     {
         float heightOffset = 1.0f; // Adjust the height offset as needed.
 
