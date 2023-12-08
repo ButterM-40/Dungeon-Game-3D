@@ -7,6 +7,7 @@ public class UIBossHealthBar : MonoBehaviour
 {
     public Text bossName;
     Slider slider;
+    public float Timer = 10f;
 
     private void Awake()
     {
@@ -44,4 +45,19 @@ public class UIBossHealthBar : MonoBehaviour
     {
         slider.value = CurrentHealth;
     }
+
+    public void DecreaseBossCurrentHealth(int CurrentHealth)
+    {
+        slider.value -= CurrentHealth;
+    }
+
+    // public void Update()
+    // {
+    //     Timer -= Time.deltaTime;
+    //     if(Timer < 0)
+    //     {
+    //         slider.value -= 10;
+    //         Timer = 10f;
+    //     }
+    // }
 }

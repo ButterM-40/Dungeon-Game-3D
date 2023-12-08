@@ -22,6 +22,10 @@ public class BossMove : MonoBehaviour
     public float CrystalTimerSet = 20f;
     public float timeBetweenAttacks;
 
+    //Boss Health Bar Info
+    public string bossName;
+    UIBossHealthBar bossHealthBar;
+
     private void Awake(){
         agent = GetComponent<NavMeshAgent>();
         animator = transform.GetComponent<Animator>();
@@ -30,6 +34,14 @@ public class BossMove : MonoBehaviour
             }else{
                 Debug.LogError("Child Animator not found");
             }
+
+        bossHealthBar = FindObjectOfType<UIBossHealthBar>();
+    }
+
+    private void Start()
+    {
+        bossHealthBar.SetBossName(bossName);
+        bossHealthBar.SetBossMaxHealth(100); 
     }
 
     private void Update(){
