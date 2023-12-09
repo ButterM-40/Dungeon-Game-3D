@@ -15,6 +15,8 @@ public class ThirdPersonMovement : MonoBehaviour
     private bool isRolling = false;
     private float turnSmoothVelocity;
     Vector3 moveDir;
+    // I added a prefab reference thing for the Animator component (I can attach the slash here and call it later in the code )
+    public GameObject prefab;
     void Start(){
 
         animator = GetComponent<Animator>();
@@ -25,6 +27,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+        
 
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
         if (direction.magnitude >= 0.1f && !isRolling)
@@ -68,7 +71,13 @@ public class ThirdPersonMovement : MonoBehaviour
 
             if(Input.GetMouseButtonDown(0))
             {
-                animator.SetBool("IsAttacking", true);
+                /// I edited this portion of the code so I can have the slash effect be done at the same time when we attack 
+                 animator.SetBool("IsAttacking", true);
+                 GameObject instance = Instantiate(prefab, transform.position, transform.rotation);
+                 Animator prefabAnimator = instance.GetComponent<Animator>();
+                 prefabAnimator.SetBool("IsAttacking", true);
+
+               
             }
 
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
@@ -78,10 +87,19 @@ public class ThirdPersonMovement : MonoBehaviour
             animator.SetBool("IsMoving", false);
             animator.SetBool("IsRunning", false);
             if (Input.GetMouseButtonDown(0))
-                animator.SetBool("IsAttacking", true);
+            /// I edited this portion of the code so I can have the slash effect be done at the same time when we attack 
+            {
+            animator.SetBool("IsAttacking", true);
+            GameObject instance = Instantiate(prefab, transform.position, transform.rotation);
+            Animator prefabAnimator = instance.GetComponent<Animator>();
+            prefabAnimator.SetBool("IsAttacking", true);
+            }
+                
         }
 
         if(Input.GetMouseButtonUp(0)){
+          
+
             animator.SetBool("IsAttacking", false);
         }
 
@@ -130,6 +148,7 @@ public class ThirdPersonMovement : MonoBehaviour
     // public void updateTransform(Transform newPosition){
     //     transform = newPosition;
     // }
+
 }
 
 
