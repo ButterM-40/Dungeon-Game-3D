@@ -10,11 +10,12 @@ public class CrystalHoming : MonoBehaviour
 
     private bool isMoving = true;
     private Transform position1;
+    private float destroyObjectTime = 30f;
     private void Update()
     {
         if (isMoving && target != null)
         {
-            Debug.Log("Run");
+            //Debug.Log("Run");
             // Calculate the direction to move towards the target.
             Vector3 moveDirection = (target.position - transform.position).normalized;
 
@@ -28,13 +29,20 @@ public class CrystalHoming : MonoBehaviour
                 isMoving = false;
             }
         }
+        if(destroyObjectTime <= 0f){
+            Destroy(gameObject);
+        }
+        destroyObjectTime -= Time.deltaTime;
     }
     private void OnTriggerEnter(Collider other)
     {
         // Check if the object collided with a trigger collider.
-        if (other.isTrigger)
+        if(other.gameObject.tag == "Player")
         {
+            other.gameObject.GetComponent<Player>().TakeDamage(20);
+            //Debug.Log("Meow");
             isMoving = false; // Stop moving when a trigger is hit.
+            Destroy(gameObject);
         }
     }
     public void SetParameters(Transform target1)
