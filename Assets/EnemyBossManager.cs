@@ -18,4 +18,10 @@ public class EnemyBossManager : MonoBehaviour
         bossHealthBar.SetBossName(bossName);
         bossHealthBar.SetBossMaxHealth(100); 
     }
+    void OnTriggerEnter(Collider other){
+        if(other.gameObject.tag == "Player"){
+            Debug.Log("Detected Player");
+            bossHealthBar.DecreaseBossCurrentHealth(10);
+        }
+    }
 }
