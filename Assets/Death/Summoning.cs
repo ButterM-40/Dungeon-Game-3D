@@ -6,12 +6,16 @@ public class Summoning : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject Boss;
+    public GameObject Weapon;
     public GameObject leftDoor;
     public GameObject rightDoor;
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) // Check if the trigger event is with the player
         {
+
+            //Weapon.SetActive(true);
+            Weapon.tag = "Weapon";
             Boss.SetActive(true);
         }
         
@@ -21,5 +25,7 @@ public class Summoning : MonoBehaviour
     }
     void Start(){
         Boss.SetActive(false);
+
+        Weapon.SetActive(true);
     }
 }
