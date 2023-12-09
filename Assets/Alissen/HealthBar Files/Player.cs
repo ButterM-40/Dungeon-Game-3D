@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject DeathStuff;
     public InventoryObject inventory;
     public DisplayInventory InventoryUpdater;
     public void OnTriggerEnter(Collider other)
@@ -75,5 +76,9 @@ public class Player : MonoBehaviour
     {
         currentHealth-=damage;
         healthBar.SetHealth(currentHealth);
+        if(currentHealth < 0f){
+            Time.timeScale = 0; 
+            DeathStuff.SetActive(true);
+        }
     }
 }

@@ -23,6 +23,10 @@ public class ElevensLab : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //StartCoroutine(GeneratorAndStreamAudio(text));
+    }
+    public void StartEvent(string text){
+        Debug.Log(text);
         StartCoroutine(GeneratorAndStreamAudio(text));
     }
 
