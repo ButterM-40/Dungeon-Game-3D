@@ -50,6 +50,11 @@ public class UIBossHealthBar : MonoBehaviour
     {
         slider.value -= CurrentHealth;
     }
+    public float getHealthBar()
+    {
+        //slider.gameObject.SetActive(true);
+        return slider.value;
+    }
 
     // public void Update()
     // {

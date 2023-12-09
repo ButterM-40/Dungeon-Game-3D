@@ -12,6 +12,7 @@ public class BossMove : MonoBehaviour
     public Transform goal;
     private int health;
     private Animator animator;
+    bool giveUp=false;
     
     bool alreadyAttacked = false;
     public float _gravityACD = 30.0f;
@@ -158,12 +159,12 @@ public class BossMove : MonoBehaviour
             EnragedBoss();
         }
         else if (mood == "Give Up"){
-            giveUpBoss();
+            giveUp=true;
         }
     }
     
-    private void giveUpBoss(){
-        Destroy(gameObject);
+    public bool giveUpBoss(){
+        return giveUp;
     }
     private void BossDies(){
         Destroy(gameObject);

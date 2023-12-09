@@ -11,6 +11,9 @@ public class CrystalHoming : MonoBehaviour
     private bool isMoving = true;
     private Transform position1;
     private float destroyObjectTime = 30f;
+    private void Start(){
+        gameObject.tag = "Crystal";
+    }
     private void Update()
     {
         if (isMoving && target != null)
