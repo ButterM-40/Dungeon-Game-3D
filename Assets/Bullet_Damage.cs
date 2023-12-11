@@ -7,6 +7,7 @@ public class Bullet_Damage : MonoBehaviour
         Transform target;
         Animator m_Animator;
          private float DespawnDelay = 3f;
+         public int  Damage=10;
 
     void Start()
     {
@@ -19,7 +20,7 @@ public class Bullet_Damage : MonoBehaviour
         if (other.gameObject.tag=="Player")
         {
            // print("HIT");
-           target.GetComponent<Player>().TakeDamage(10);
+           target.GetComponent<Player>().TakeDamage(Damage);
            Destroy(gameObject);
         }
     }

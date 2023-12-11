@@ -3542,6 +3542,7 @@ GameObject:
   - component: {fileID: 3526066303333868647}
   - component: {fileID: 3526066303333868644}
   - component: {fileID: 3526066303333868646}
+  - component: {fileID: 8530473172965674513}
   m_Layer: 0
   m_Name: Character_Skeleton_Slave_01 1
   m_TagString: enemy
@@ -3648,7 +3649,7 @@ MeshCollider:
   m_GameObject: {fileID: 7134422112426506427}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -3661,8 +3662,8 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7134422112426506427}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2.4751847
   m_Direction: 1
@@ -3723,6 +3724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRadius: 10
   attackCooldown: 5
+  delayAttack: 0.2
 --- !u!114 &3526066303333868646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3735,6 +3737,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb95b6a31be7cdb479e42221b7ce967f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8530473172965674513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134422112426506427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd142303992021a4c9f8795ad17ed41b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
+  damagerPerSwing: 10
 --- !u!1 &7134431004816401787
 GameObject:
   m_ObjectHideFlags: 0

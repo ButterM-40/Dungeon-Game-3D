@@ -148,7 +148,25 @@ public class ThirdPersonMovement : MonoBehaviour
     // public void updateTransform(Transform newPosition){
     //     transform = newPosition;
     // }
+ public void Die()
+  {
+    //Should be implemented in next sprint
+   // enemy_controller.enabled=false;
+    Debug.Log("WORKED");
+    animator.SetTrigger("Dead");
+    StartCoroutine(DestroyAfterDelay(3f));
+  }
+  IEnumerator DestroyAfterDelay(float delay)
+  {
+    yield return new WaitForSeconds(delay);
+    Destroy(gameObject);
+  }
+  public void TakeDamage()
+  {
+    animator.SetTrigger("Hit");
+  }
 
 }
+
 
 

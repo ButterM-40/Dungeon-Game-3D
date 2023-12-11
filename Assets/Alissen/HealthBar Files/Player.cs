@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    ThirdPersonMovement  thirdpersonmovement;
     public GameObject DeathStuff;
     public InventoryObject inventory;
     public DisplayInventory InventoryUpdater;
@@ -34,11 +35,14 @@ public class Player : MonoBehaviour
     public int currentHealth;
 
     public HealthBar healthBar;
+    internal static float lookradius;
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth=maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        thirdpersonmovement = GetComponent<ThirdPersonMovement>();
         
     }
 
@@ -76,9 +80,19 @@ public class Player : MonoBehaviour
     {
         currentHealth-=damage;
         healthBar.SetHealth(currentHealth);
+        if (currentHealth >= 1f)
+        {
+         thirdpersonmovement.TakeDamage();
+        }
+        if(currentHealth == 0f)
+        {
+            thirdpersonmovement.Die();
+            //Debug.Log("CALLED FUNCTION");
+        }
         if(currentHealth < 0f){
             Time.timeScale = 0; 
             DeathStuff.SetActive(true);
         }
     }
+
 }
