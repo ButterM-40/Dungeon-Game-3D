@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
   }
   void OnTriggerEnter(Collider other)
   {
+    Debug.Log("Hit");
     if(other.CompareTag("Weapon"))
     {
         currentHealth-=damagerPerSwing;
