@@ -1,17 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Windows.Speech;
+using System;
+using TMPro.Examples;
 
 namespace OpenAI
 {
 public class AudioRecording : MonoBehaviour {
- 
+    public ElevensLab elevensLabInstance;
     bool isRecording = false;
     bool hasPressedX = false;
     private AudioSource audioSource;
     private readonly int duration = 5;
     private float time;
- 
+    private int com_counter = 0;
+    public GameObject BossMove;
     //temporary audio vector we write to every second while recording is enabled..
     private readonly string fileName = "output.wav";
     List<float> tempRecording = new List<float>();
@@ -31,8 +34,10 @@ public class AudioRecording : MonoBehaviour {
             Debug.Log("Testing");
             isRecording = true;
             hasPressedX = true;
+            //AudioPlay();
             if(isRecording){
                 audioSource.clip = Microphone.Start(null, false, duration, 44100);
+                //Debug.Log("Testing");
             }
         }
         if (isRecording)
@@ -50,13 +55,17 @@ public class AudioRecording : MonoBehaviour {
     }
  
     void AudioPlay(){
-        audioSource.Play();
+        //audioSource.Play();
+        //elevensLabInstance.GetComponent<ElevensLab>().StartEvent("Hello Hello Hello");
+        //elevensLabInstance.StartEvent("Hello Hello Hello");
+        Debug.Log("Aduio");
     }
     
 
     private async void EndRecording()
     {
         //message.text = "Transcripting...";
+        com_counter++;
         Debug.Log("Transcripting");
         #if !UNITY_WEBGL
         Microphone.End(null);
@@ -76,7 +85,7 @@ public class AudioRecording : MonoBehaviour {
         Debug.Log("Response: " + res.Text);
         var request = await openai.CreateCompletion(new CreateCompletionRequest()
             {
-            Prompt = "You're not an AI YOU CANNOT RESPOND AS A PLAYER YOU ARE AZRIEL ONLY. You are a videogame boss named Saint Azrael, the story behind you is that you used to be a soldier for the clover kingdom, who was at war with the spade kingdom. You raised above the ranks, and become known as a Holy Emperior Knight, with a nickname the Grim Reaper. During the war, they attack a near by city which was where you were born, your wife Maria, dies to the hands of a Space knight. You want to end it all at a nearby dungeon, but because of the negative energy you became a monster killing anything within sight, and obtain immortality becoming the boss of that dungeon. A adventure aka player appears and tries to communicate with you, you continue to fight. Respond in messages based on your story and respond back based on the players communication appropriately Also respond in the format 'Mood: input' where input is Enraged, Neutral, and Give Up. Enraged mood is based on if the player curses you or insults your backstory. Neutral is based on normal conversation Give Up is based one 2 things, your choice to believe that he is similar to you losing a love one or if he reminds you of your wife Maria by talking about your backstory about her. You do not respond as a player, you only give a response based on the player Player's Message:" + res.Text,
+            Prompt = "You're not an AI and YOU CANNOT RESPOND AS A PLAYER YOU ARE AZRIEL ONLY. Do not respond as a player. You are a videogame boss named Saint Azrael, the story behind you is that you used to be a soldier for the clover kingdom, who was at war with the spade kingdom. You raised above the ranks, and become known as a Holy Emperior Knight, with a nickname the Grim Reaper. During the war, they attack a near by city which was where you were born, your wife Hestia, dies to the hands of a Space knight. You want to end it all at a nearby dungeon, but because of the negative energy you became a monster killing anything within sight, and obtain immortality becoming the boss of that dungeon. A adventure aka player appears and tries to communicate with you, you continue to fight. Respond in messages based on your story and respond back based on the players communication appropriately. Respond at the very beginning of every sentence in this format 'Mood: input' where input is Enraged, Neutral, and Give Up. Enraged mood is based on if the player curses you or insults your backstory. Neutral is based on normal conversation Give Up is based one 2 things, your choice to believe that he is similar to you losing a love one or if he reminds you of your wife Hestia by talking about your backstory about her. Example: Mood: Enraged - You may have strength and courage, but it wont save you from me! You do not respond as a player, you need to give response based on the player Player's Message:" + res.Text,
                 Model = "text-davinci-003",
                 MaxTokens = 128
             });
@@ -85,6 +94,32 @@ public class AudioRecording : MonoBehaviour {
                 //AppendMessage(request.Choices[0].Text, false);
                 string Response = request.Choices[0].Text.Trim();
                 Debug.Log(Response);
+                string response = request.Choices[0].Text.Trim();
+                if (response.Contains("Mood: ")) {
+                    // Split the response by "Mood: "
+                    string[] parts = response.Split(new string[] { "Mood: " }, StringSplitOptions.RemoveEmptyEntries);
+
+                    // Extract the mood (assuming the mood is the first word after "Mood: ")
+                    string mood = parts[parts.Length - 1].Split(' ')[0].Trim();
+                    string GPTResponse = response.Substring(response.IndexOf(mood) + mood.Length).Trim();
+                    Console.WriteLine("Mood: " + mood);
+                    Console.WriteLine("GPTResponse: " + GPTResponse);
+                    elevensLabInstance.StartEvent(GPTResponse);
+                    
+                    //elevensLabInstance.GetComponent<ElevensLab>().StartEvent("GPTResponse");
+                
+                } else {
+                    Console.WriteLine("Mood not found in the response.");
+                }
+                if(com_counter == 2){
+                        if(response.Contains("Enraged")){
+                            BossMove.GetComponent<BossMove>().BossMood("Enraged");
+                        }
+                    }else if (com_counter == 3){
+                        if(response.Contains("Give Up")){
+                            BossMove.GetComponent<BossMove>().BossMood("Give Up");
+                        }
+                    }
             }
             else
             {

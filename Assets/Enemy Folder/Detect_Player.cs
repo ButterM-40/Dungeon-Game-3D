@@ -16,7 +16,7 @@ public class Detect_Player : MonoBehaviour
     target1 = Player_Manager.instance.player.transform;
     spawn_enemy = GetComponent<Spawn_Enemy>();
     //player_spawner_range = GetComponent<Player_Spawner_Range>();
-    test = player_spawner_range.lookRadius;
+//    test = player_spawner_range.lookRadius;
     }
 
     // Update is called once per frame

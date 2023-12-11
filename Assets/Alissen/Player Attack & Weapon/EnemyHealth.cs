@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
   public int startingHealth=100;
   public int currentHealth;
   public int damagerPerSwing=10;
+  public GameObject Drop;
 
   void Awake()
   {
@@ -38,5 +39,12 @@ public class EnemyHealth : MonoBehaviour
   {
     yield return new WaitForSeconds(delay);
     Destroy(gameObject);
+    //animator.SetTrigger("DEATH");
+    Debug.Log("Stuff");
+    Instantiate(Drop, transform.position, Quaternion.identity);
+    Drop.transform.SetParent(null);
+    Destroy(gameObject, 2f);
+
   }
+
 }
