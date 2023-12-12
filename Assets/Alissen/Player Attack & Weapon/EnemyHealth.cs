@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour
   public int damagerPerSwing=10;
   public GameObject Drop;
 
+
   void Awake()
   {
     animator=GetComponent<Animator>();
@@ -19,7 +20,7 @@ public class EnemyHealth : MonoBehaviour
   }
   void OnTriggerEnter(Collider other)
   {
-    Debug.Log("Hit");
+    //Debug.Log("Hit");
     if(other.CompareTag("Weapon"))
     {
         currentHealth-=damagerPerSwing;
@@ -41,7 +42,7 @@ public class EnemyHealth : MonoBehaviour
     yield return new WaitForSeconds(delay);
     Destroy(gameObject);
     //animator.SetTrigger("DEATH");
-    Debug.Log("Stuff");
+    //Debug.Log("Stuff");
     Instantiate(Drop, transform.position, Quaternion.identity);
     Drop.transform.SetParent(null);
     Destroy(gameObject, 2f);

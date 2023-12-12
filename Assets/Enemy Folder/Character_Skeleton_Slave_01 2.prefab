@@ -1237,9 +1237,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd142303992021a4c9f8795ad17ed41b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 25
   currentHealth: 0
   damagerPerSwing: 10
+  Drop: {fileID: 0}
 --- !u!64 &4965817883335619794
 MeshCollider:
   m_ObjectHideFlags: 0
